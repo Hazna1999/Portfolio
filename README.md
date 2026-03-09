@@ -4,7 +4,7 @@ Welcome to my personal portfolio!
 
 ## Overview
 
-This portfolio showcases my work as a Software Engineer with 2.5+ years of experience in both front-end and back-end development. You'll find a variety of projects that highlight my skills in HTML, CSS, JavaScript, Laravel, Django, and more.
+This portfolio showcases my work as a Software Engineer with 3+ years of experience in both front-end and back-end development. You'll find a variety of projects that highlight my skills in HTML, CSS, JavaScript, Laravel, Django, and more.
 
 ## Technologies Used
 
