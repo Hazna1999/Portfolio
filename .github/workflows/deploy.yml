@@ -17,6 +17,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+ # 👇 ADD DEBUG STEP HERE
+    - name: Debug SSH Key (temporary)
+      run: |
+        echo "Checking if secret exists..."
+        echo "${{ secrets.EC2_SSH_KEY }}"
     # (Optional but good for interview)
     - name: Basic check (simulate CI)
       run: |
