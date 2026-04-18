@@ -1,0 +1,46 @@
+name: CI/CD Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main          # deploy ONLY when main branch is updated
+
+  pull_request:
+    branches:
+      - main          # run checks when PR is created
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # (Optional but good for interview)
+    - name: Basic check (simulate CI)
+      run: |
+        echo "Running basic checks..."
+        ls -la
+
+    # Deploy ONLY when merged to main
+    - name: Deploy to EC2 via SSH
+      if: github.ref == 'refs/heads/main'
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          echo "Connected to EC2"
+
+          # Go to project directory
+          cd /var/www/portfolio || exit
+
+          # Pull latest changes
+          git pull origin main
+
+          # Restart server (nginx)
+          sudo systemctl restart nginx
+
+          echo "Deployment completed"
